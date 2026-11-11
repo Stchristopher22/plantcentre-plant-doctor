@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
     private static final int FILE_PICKER = 42;
 
     // Replace with your deployed HTTPS Streamlit URL before building.
-    private static final String APP_URL = "https://YOUR-PLANTCENTRE-APP.streamlit.app";
+    private static final String APP_URL = "https://plantcentre-plant-doctor-5u5wthgerynsptchjeqmuv.streamlit.app/";
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
