@@ -50,7 +50,7 @@ Use plain English. Arrays for visible_symptoms, possible_causes, recovery_plan, 
                         ]}],
                         "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
                     }
-                    endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+                    endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
                     response = requests.post(endpoint, params={"key": api_key}, json=body, timeout=90)
                     response.raise_for_status()
                     result_text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
