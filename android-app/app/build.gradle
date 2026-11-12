@@ -1,9 +1,9 @@
 plugins { id 'com.android.application' }
 android {
-    namespace 'com.plantcentre.leafcare'
+    namespace 'com.nextgeninnovators.greenguardai'
     compileSdk 35
     defaultConfig {
-        applicationId 'com.plantcentre.leafcare'
+        applicationId 'com.nextgeninnovators.greenguardai'
         minSdk 23
         targetSdk 35
         versionCode 1
