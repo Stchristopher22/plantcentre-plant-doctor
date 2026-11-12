@@ -4,7 +4,7 @@ import json
 import base64
 import html
 
-st.set_page_config(page_title="Plant Peace", page_icon="🌿", layout="centered")
+st.set_page_config(page_title="Green Guard AI", page_icon="🌿", layout="centered")
 
 st.markdown("""
 <style>
@@ -45,13 +45,13 @@ def get_secret_key():
 
 st.markdown("""
 <div class="pc-hero">
-  <div class="pc-kicker">PlantCentre presents</div>
-  <h1>Plant Peace 🌿</h1>
+  <div class="pc-kicker">NextGen Innovators presents</div>
+  <h1>Green Guard AI 🌿</h1>
   <p>A little care, a healthier plant. Identify, understand and nurture your green friends.</p>
   <span class="pc-leaf leaf-a">🍃</span><span class="pc-leaf leaf-b">🌿</span><span class="pc-leaf leaf-c">🍃</span>
 </div>
 """, unsafe_allow_html=True)
-st.write("Upload a clear photo of a plant or leaf. Plant Peace will help identify visible symptoms and suggest practical care steps.")
+st.write("Upload a clear photo of a plant or leaf. Green Guard AI will help identify visible symptoms and suggest practical care steps.")
 st.caption("English • Designed for home gardeners in Chennai and beyond")
 
 api_key = get_secret_key()
@@ -69,7 +69,7 @@ if photo:
 plant_name, scientific_name, identification_confidence, health_status, visible_symptoms, possible_causes, likely_disease_or_pest, risk_level, recovery_plan, watering, sunlight, soil_and_drainage, prevention, expert_help, uncertainty.
 Use plain English. Arrays for visible_symptoms, possible_causes, recovery_plan, prevention. Distinguish visible observations from possible explanations. If unclear, say so. Do not claim a definite disease from a photo alone. Consider overwatering, underwatering, heat/sun scorch, nutrient issues, pests and fungal/bacterial diseases. Give safe practical steps. Avoid chemical pesticides unless necessary; if mentioned, advise following product label and local rules. Tailor general advice to warm, humid Chennai conditions where relevant."""
             try:
-                with st.spinner("🍃 Plant Peace is checking your plant..."):
+                with st.spinner("🍃 Green Guard AI is checking your plant..."):
                     body = {
                         "contents": [{"parts": [
                             {"text": prompt},
@@ -132,5 +132,5 @@ if report:
     st.warning("AI photo analysis is an initial guide, not a confirmed diagnosis. Similar problems can look alike. Check leaf undersides, stems, soil moisture and recent care changes. Consult a horticulture professional for valuable or rapidly declining plants.")
 
 st.divider()
-st.markdown("<div style='text-align:center;color:#54725c;font-weight:700'>Plant Peace · by PlantCentre</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center;color:#54725c;font-weight:700'>Green Guard AI · by NextGen Innovators</div>", unsafe_allow_html=True)
 st.caption("Photo analysis is sent to Google Gemini when you request a check. Do not upload personal or sensitive images. API usage may be subject to Google's quotas and pricing.")
