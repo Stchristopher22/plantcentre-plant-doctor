@@ -1,17 +1,17 @@
-# Plant Peace 🌿
-### A PlantCentre project
+# Green Guard AI 🌿
+### Created by NextGen Innovators
 
 English-language plant identification and AI-assisted plant-health guide. Upload a plant or leaf photo to receive an initial plant identification, visible symptom observations, possible causes, and practical care suggestions.
 
 ## App overview
-- **App name:** Plant Peace
-- **Brand:** PlantCentre
+- **App name:** Green Guard AI
+- **Brand:** NextGen Innovators
 - **Web app:** Streamlit
 - **Android app:** WebView wrapper that opens the hosted web app
 - **Language:** English
 
 ## Interface
-The Plant Peace interface uses a botanical green theme with:
+The Green Guard AI interface uses a botanical green theme with:
 - A welcome banner with gently floating leaf decorations.
 - Soft green backgrounds and rounded glass-style report cards.
 - Separate report sections for plant identification, health status, possible disease or pests, visible symptoms, possible causes, recovery/treatment, prevention, watering, sunlight, and soil/drainage guidance.
@@ -55,20 +55,20 @@ Never commit API keys or secrets files to GitHub. Do not share the key in screen
 3. Set the main file path to `web/app.py`.
 4. Add `GEMINI_API_KEY` in Streamlit Secrets.
 5. Deploy the app and confirm that the HTTPS URL opens.
-6. The Android wrapper is configured to open the hosted Plant Peace web app.
+6. The Android wrapper is configured to open the hosted Green Guard AI web app.
 
-Hosted app: https://plantcentre-plant-doctor-5u5wthgerynsptchjeqmuv.streamlit.app/
+Hosted app: https://greenguardai-plant-doctor-5u5wthgerynsptchjeqmuv.streamlit.app/
 
 ## Build the Android APK online (no Android Studio required)
 The repository includes a GitHub Actions workflow.
 
 1. Open the repository's **Actions** tab.
-2. Select **Build PlantCentre Android APK**.
+2. Select **Build NextGen Innovators Android APK**.
 3. Open the latest workflow run. A push to the Android app or workflow files also triggers a build.
 4. Wait for the workflow to complete successfully.
 5. Open the completed run and find **Artifacts**.
-6. Download **Plant-Peace-APK** and extract the ZIP file.
-7. The APK file inside is named `Plant-Peace.apk`.
+6. Download **Green-Guard-AI-APK** and extract the ZIP file.
+7. The APK file inside is named `Green-Guard-AI.apk`.
 8. Transfer it to an Android phone and install it. Android may ask you to allow installation from that source.
 
 The workflow currently creates a debug APK for testing. A signed release APK is needed before publishing or distributing the app broadly. Test installation and photo upload on a real phone first.
@@ -77,7 +77,7 @@ The workflow currently creates a debug APK for testing. A signed release APK is 
 1. The user selects a JPG, JPEG, PNG, or WEBP plant photo.
 2. The app sends the photo and an analysis prompt to the Gemini API.
 3. Gemini returns a structured plant-care report.
-4. Plant Peace displays the report in separate visual cards.
+4. Green Guard AI displays the report in separate visual cards.
 5. The user reviews the suggested care steps and, where necessary, checks with a horticulture professional.
 
 ## Features
@@ -99,4 +99,4 @@ The Android app is a WebView wrapper, not an offline plant-diagnosis model. It n
 Possible next versions could include saved plant reports, progress-photo comparisons, Tamil language support, plant-care reminders, and a plant reference library.
 
 ---
-**Plant Peace · by PlantCentre**
+**Green Guard AI · by NextGen Innovators**
