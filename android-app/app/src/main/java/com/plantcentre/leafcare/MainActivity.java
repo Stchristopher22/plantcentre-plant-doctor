@@ -1,4 +1,4 @@
-package com.plantcentre.leafcare;
+package com.nextgeninnovators.greenguardai;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ public class MainActivity extends Activity {
     private ValueCallback<Uri[]> fileCallback;
     private static final int FILE_PICKER = 42;
 
-    // Replace with your deployed HTTPS Streamlit URL before building.
     private static final String APP_URL = "https://plantcentre-plant-doctor-5u5wthgerynsptchjeqmuv.streamlit.app/";
 
     @Override public void onCreate(Bundle savedInstanceState) {
