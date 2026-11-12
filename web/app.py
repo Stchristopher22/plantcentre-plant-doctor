@@ -4,7 +4,7 @@ import json
 import base64
 import html
 
-st.set_page_config(page_title="Green Guard AI", page_icon="🌿", layout="centered")
+st.set_page_config(page_title="Green Guard AI", page_icon="🛡️", layout="centered")
 
 st.markdown("""
 <style>
@@ -52,7 +52,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 st.write("Upload a clear photo of a plant or leaf. Green Guard AI will help identify visible symptoms and suggest practical care steps.")
-st.caption("English • Designed for home gardeners in Chennai and beyond")
+st.caption("English • Created by NextGen Innovators")
 
 api_key = get_secret_key()
 if not api_key:
