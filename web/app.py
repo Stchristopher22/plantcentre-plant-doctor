@@ -3,6 +3,7 @@ import requests
 import json
 import base64
 import html
+import time
 
 st.set_page_config(page_title="Green Guard AI", page_icon="🛡️", layout="centered")
 
@@ -81,12 +82,45 @@ Use plain English. Arrays for visible_symptoms, possible_causes, recovery_plan, 
                         "generationConfig": {"temperature": 0.2, "responseMimeType": "application/json"}
                     }
                     endpoint = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent"
-                    response = requests.post(endpoint, params={"key": api_key}, json=body, timeout=90)
-                    response.raise_for_status()
-                    result_text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
-                    st.session_state["plant_report"] = json.loads(result_text)
-            except requests.HTTPError as exc:
-                st.error(f"AI service returned HTTP {exc.response.status_code}. Check your API key, quota and model access.")
+                    response = None
+                    # Retry only temporary rate-limit/server-capacity errors.
+                    for attempt in range(3):
+                        response = requests.post(endpoint, params={"key": api_key}, json=body, timeout=90)
+                        if response.status_code not in (429, 503) or attempt == 2:
+                            break
+                        retry_after = response.headers.get("Retry-After")
+                        try:
+                            wait_seconds = min(float(retry_after), 20) if retry_after else 2 ** (attempt + 1)
+                        except (TypeError, ValueError):
+                            wait_seconds = 2 ** (attempt + 1)
+                        time.sleep(wait_seconds)
+
+                    if response is None:
+                        st.error("The AI service did not return a response. Please try again.")
+                    else:
+                        try:
+                            response.raise_for_status()
+                        except requests.HTTPError:
+                            try:
+                                error_data = response.json().get("error", {})
+                                error_message = error_data.get("message", response.text[:500])
+                                error_status = error_data.get("status", "API_ERROR")
+                            except ValueError:
+                                error_message = response.text[:500]
+                                error_status = "API_ERROR"
+
+                            if response.status_code == 429:
+                                st.error("Gemini usage limit reached (HTTP 429). " + str(error_message))
+                                st.info("Check your project's active limits and usage in Google AI Studio → Rate limits. If the message says quota exceeded, wait for the reset or enable billing/upgrade the project's tier. Repeated retries will not fix a daily quota limit.")
+                            elif response.status_code == 503:
+                                st.error("Gemini is temporarily busy (HTTP 503). Please wait a little and try again.")
+                            else:
+                                st.error(f"Gemini API error {response.status_code} ({error_status}): {error_message}")
+                        else:
+                            result_text = response.json()["candidates"][0]["content"]["parts"][0]["text"]
+                            st.session_state["plant_report"] = json.loads(result_text)
+            except requests.RequestException as exc:
+                st.error(f"Network error while contacting Gemini: {exc}")
             except Exception as exc:
                 st.error(f"Analysis could not be completed: {exc}")
 
